@@ -25,13 +25,19 @@ title:               BIMM 143
 # Set to `https://<username>.github.io` when hosting on GitHub Pages
 url:                 https://bioboot.github.io
 
+quarter: S25
+
 # Set to '' when hosting a blog on GitHub Pages, ie on `//<username>.github.io`
 # Set to '/<reponame>' when using the `gh-pages` branch of a repository
 #baseurl:             ''
-baseurl:             /bimm143_S25  ## !!!EDIT!!!
+#baseurl: /bimm143_{{ site.quarter }}
+baseurl:             /bimm143_S25  ### !!!EDIT BY HAND!!!
 
 # Sidebar image and fallback color (note you can have a page specific sidebar image and color from yml)
-image:               /bimm143_S25/assets/img/dna.jpg  ## !!!EDIT!!!
+image: https://bioboot.github.io/bimm143_W25/assets/img/dna.jpg
+##image: /bimm143_{{ site.quarter }}/assets/img/dna.jpg
+##image:               /bimm143_S25/assets/img/dna.jpg  ## !!!EDIT!!!
+
 
 # A very short description of your page
 tagline:             An introductory hands-on course in Bioinformatics for Biology majors at UCSD.
@@ -117,9 +123,9 @@ collections:
 
 plugins:
   - jekyll-default-layout
-  - jekyll-feed
+#  - jekyll-feed
   - jekyll-optional-front-matter
-  - jekyll-paginate
+#  - jekyll-paginate
   - jekyll-redirect-from
   - jekyll-relative-links
   - jekyll-sitemap

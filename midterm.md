@@ -21,8 +21,7 @@ Specific grading criteria (assessment rubrics) for each homework will be given a
 A total of 35% of the course grade will be assigned based on the“find-a-gene project assignment”. The purpose of this project assignment is for you to grasp the principles of database searching, sequence analysis, functional annotation and exploratory data analysis with R that we cover in the course  
 - Example questions [old worked example (PDF)]({{ site.baseurl }}/class-material
 /Find_A_Gene_Project.pdf){:.no-push-state}.  Note that quite a few questions hav
-e changed and you should refer to the latest version on the [Schedule page]({{ s
-ite.baseurl }}/class-material/schedule/#21){:.no-push-state}.
+e changed and you should refer to the latest version on the [Schedule page]({{ site.baseurl }}/class-material/schedule/#21){:.no-push-state}.
 
 
 ## Final Exam:  
@@ -40,7 +39,7 @@ A complete listing of class assignments along with anticipated due dates is [ava
 Course Director
 : [Prof. Barry J. Grant](http://thegrantlab.org/) (Email: [bjgrant@ucsd.edu](mailto:bjgrant@ucsd.edu))
 
-Course Syllabus
+Course Syllabus 
 : [Spring 2025 (PDF)]({{ site.baseurl}}{{site.data.authors.corelinks.syllabus}}){:.no-push-state}
 {:.message}
 
