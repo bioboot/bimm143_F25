@@ -225,14 +225,14 @@ Why do we use R for bioinformatics? R language basics and the RStudio IDE, Major
 **Videos:**
 - 4.1 [Why R and RStudio](https://youtu.be/Asm2PHOZAcE){:.no-push-state}{:target="_blank"},    
 - 4.2 [Major R data structures, data types, and using functions](http://youtu.be/3LOTxeQEHSM){:.no-push-state}{:target="_blank"},  
-- 4.3 [Working with DataCamp](https://www.youtube.com/watch?v=q_GUl2YRoVk){:.no-push-state}{:target="_blank"}  **N.B.** Use your UCSD email invite to sign up and visit our class group/organization.    
+- 4.3 [Working with DataCamp](https://youtu.be/oO2RFvpHjDg){:.no-push-state}{:target="_blank"}  **N.B.** Use your UCSD email invite to sign up and visit our class group/organization.    
 
 **Supporting Material:**
 - Lecture Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
-- Cheat Sheet: [Base R overview]({{ site.baseurl }}/class-material/base-r.pdf){:target="_blank"}{:.no-push-state},
+- Cheat Sheet: [Base R overview](https://bioboot.github.io/bimm143_W25/class-material/base-r.pdf){:target="_blank"}{:.no-push-state},
 - Lab: [Hands-on section]({{ site.baseurl }}/class-material/r_intro/r_intro.html){:.no-push-state}{:target="_blank"},  
 - Lab: [Video walk-through](https://youtu.be/QQ7KPg2NnpY?t=1098){:target="_blank"}{:.no-push-state} focusing on introducing R data structures and core syntax,
-- Extra credit lab: [Introduction to data in R]({{ site.baseurl }}/class-material/lab4.pdf){:.no-push-state}{:target="_blank"},  
+- Extra credit lab: [Introduction to data in R]({{ site.baseurl }}/class-material/lab04.pdf){:.no-push-state}{:target="_blank"},  
 - Optional extension: [Advanced conservation analysis of globins with R]({{ site.baseurl }}/class-material/globin_analysis){:.no-push-state} this demonstrates where we are going on our R learning journey. You should be able to do analysis like this on your own at the end of the course.  
 - Student Hours: [{{ site.data.authors.corelinks.officetime }}]({{ site.data.authors.corelinks.officehours }}){:.no-push-state}{:target="_blank"},   
 - Feedback: [Muddy point assessment](https://forms.gle/pGzaaSRGnQ1r9mrL9){:.no-push-state}{:target="_blank"},  
@@ -267,7 +267,6 @@ The exploratory data analysis mindset, Data visualization best practices, Simple
 - 5.1 - [Why visualize data?](https://youtu.be/R_b7g5sGzwY){:.no-push-state}{:target="_blank"},   
 - 5.2 - [Data visualization best practices](https://youtu.be/0WPeOxrboug){:.no-push-state}{:target="_blank"},   
 - 5.3 - [Introduction to ggplot](https://youtu.be/qtfJa8muH9E){:.no-push-state}{:target="_blank"},   
-- 5.4 - Optional: [The **g**rammar of **g**raphics - the **gg** in ggplot](https://vimeo.com/332290655){:.no-push-state}{:target="_blank"},   
 
 
 **Supporting Material:**
@@ -638,7 +637,7 @@ A topical mini-project using web-scraping, JSON based APIs and advanced dplyr an
 
 - Lab: [Investigating pertussis resurgence mini-project](https://bioboot.github.io/cmi-pb_teaching/introduction/intro_to_cmi-pb.html){:.no-push-state}{:target="_blank"} **submit to gradescope**,  
 - Additional resources:
-  * CDC pertussis [case tracking data](https://www.cdc.gov/pertussis/surv-reporting/cases-by-year.html){:.no-push-state}{:target="_blank"},
+  * CDC pertussis [case tracking data](https://www.cdc.gov/pertussis/php/surveillance/pertussis-cases-by-year.html){:.no-push-state}{:target="_blank"},
   * Timeline of [major milestones in our history with Pertussis](https://bioboot.github.io/cmi-pb_teaching/timeline/pertussis_timeline.html){:.no-push-state}{:target="_blank"},  
   * The [CMI-PB resource]( https://www.cmi-pb.org/){:.no-push-state}{:target="_blank"},  
 - Feedback: [Muddy-Point-Assessment](https://forms.gle/5vfeDMxYeLdujUVg7){:.no-push-state}{:target="_blank"}.
@@ -676,8 +675,8 @@ Today’s lecture and hands-on sessions introduce Git, currently the most popula
 
 **Videos:**  
 - 20.1 - OPTIONAL: [Git for humans](https://youtu.be/eWxxfttcMts){:.no-push-state}{:target="_blank"}, 
-- 20.2 [Introduction to GitHub Pages](https://youtu.be/2MsN8gpT6jY){:.no-push-state}{:target="_blank"} that we will use for building your portfolio website.
-- 20.3 [Alternate GitHub Pages intro](https://youtu.be/QyFcl_Fba-k?si=IHyfW93gUAG2Uvub){:.no-push-state}{:target="_blank"} with a basic HTML page rather than Jekyll generated content.  
+- 20.2 [Turn on GitHub Pages](https://youtu.be/DqjPr7auwdY){:.no-push-state}{:target="_blank"} that we will use for building your portfolio website.
+- 20.3 [Introduction to GitHub Pages](https://youtu.be/QyFcl_Fba-k?si=IHyfW93gUAG2Uvub){:.no-push-state}{:target="_blank"} with a basic HTML page rather than Jekyll generated content.  
 - 20.4 [**Live stream interview**](https://youtu.be/UFYeovcGcwY){:.no-push-state}{:target="_blank"} with leading bioinformatics and genomics scientists from industry including **Dr Ali Crawford** (Associate Director, Scientific Research, *Illumina Inc.*), **Dr. Bjoern Peters** (Full Professor and Principal Investigator, *La Jolla Institute*) and **Dr. Ana Grant** (Director of Research Informatics, *Synthetic Genomics Inc.*).
 
 
