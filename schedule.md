@@ -99,8 +99,10 @@ Biology is an information science, History of Bioinformatics, Types of data, App
 
 
 **Homework**:  
-- [Questions](https://forms.gle/65YnBTm2FrQ6LQL48){:.no-push-state}{:target="_blank"},  
-- Submit your completed lab report (i.e. filled in PDF form) to [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
+- Answer the *`01_HW_quiz`* questions on [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
+- Submit your completed *`01_Lab_report`* (i.e. filled in PDF form) to [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
+
+  
 - Readings: 
   - PDF1: [What is bioinformatics? An introduction and overview]({{ site.baseurl }}/class-material/bioinformatics_review.pdf){:.no-push-state},  
   - PDF2: [Advancements and Challenges in Computational Biology]({{ site.baseurl }}/class-material/bioinformatics_challenges_2015.pdf){:.no-push-state}.  
@@ -139,11 +141,11 @@ Sequence Alignment and Database Searching: Homology, Sequence similarity, Local 
 
 
 **Homework**:   
-- [Questions](https://forms.gle/6aPiH2qkMeRUmprw8){:.no-push-state}{:target="_blank"},  
-- Submit your completed lab report (i.e. filled in PDF form) to [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
-- Complete the following [Alignment Problem]({{ site.baseurl }}/class-material/wk2_homework.pdf){:.no-push-state}{:target="_blank"},  
+- Answer the *`02_HW_quiz`* questions on [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
+- Submit your completed *`02_Lab_report`* (i.e. filled in PDF form) to [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
+- Complete and submit the following [Alignment Problem]({{ site.baseurl }}/class-material/wk2_homework.pdf){:.no-push-state}{:target="_blank"},  
 - For next week please [install R and RStudio](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu){:.no-push-state}{:target="_blank"},  
-- DataCamp: Sign-up to our [**25_bioinformatics** group/organization](https://app.datacamp.com/groups/25_bioinformatics/dashboard){:.no-push-state}{:target="_blank"} via the link on Piazza or in your UCSD email. We will use this from next week onward. However, feel free to get started with your first course [**Introduction to R!**](https://learn.datacamp.com/courses/free-introduction-to-r){:.no-push-state}{:target="_blank"}.  
+- DataCamp: Sign-up to our [**S25_bioinformatics** group](https://app.datacamp.com/groups/S25_bioinformatics/dashboard){:.no-push-state}{:target="_blank"} via the link on Piazza or in your UCSD email. We will use this from next week onward. However, feel free to get started with your first course [**Introduction to R!**](https://learn.datacamp.com/courses/free-introduction-to-r){:.no-push-state}{:target="_blank"}.  
 
 
 
