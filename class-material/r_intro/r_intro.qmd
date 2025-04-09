@@ -3,9 +3,11 @@ format:
   live-revealjs:
     theme: [simple, slides.scss]
     footer: <http://thegrantlab.org/teaching/>
+engine: knitr
 from: markdown+emoji
 title: R Language Basics
-subtitle: (Part 1)
+subtitle: "(Part 1)<br><span style='font-size: 0.8em; color: #ff5a5a; margin-top: 1em;'>Push the down arrow key ↓ to advance</span>"
+
 author: Barry Grant
 institute: UC San Diego
 logo: images/logo.png
@@ -17,7 +19,7 @@ webr:
     autorun: false
 ---
 
-
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 
 ## Background
@@ -52,11 +54,12 @@ Give it a try:
 ```
 
 </br>
-Note that you can click on line 2 and edit the code if you wish.
+Note that you can click on line 2 and edit the code and re-run.  
+*Give this a try now before moving on...*
 
 ## Checking your understanding
 
-We will use these types of "code chunks" to ask you to complete some missing code, typically indicated by the blank [______]{style="color:black;"} place holder.  
+We will use these types of "code chunks" to ask you to complete some missing code, typically indicated by the blank [______]{style="color:black;"} "underline" place holder.  
 </br>
 For example, complete the code below so your answer sums to 10:
 

@@ -1,5 +1,11 @@
 {
   "r_intro.qmd": {
     "r_intro.html": "d27ed988"
+  },
+  "test.qmd": {
+    "test.html": "e2b4987d"
+  },
+  "test2.qmd": {
+    "test2.html": "b38859ea"
   }
 }
