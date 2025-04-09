@@ -140,16 +140,18 @@ x
 
 ## :key: Key point:  {.key-slide}
 
-You will make lots of assignments and the little arrow operator `<-` is a pain to type. **Don't be lazy and use `=`**, although it would work, because it will just sow confusion later when we learn about functions. 
+You will make lots of assignments and the wee arrow operator `<-` can be a pain to type.  
+
+However, **don't be lazy and use `=`**, although it would work, because it will just sow confusion later when we learn about functions - *we always use `=` for setting function inputs* (more on this later). 
 
 </br>
 
-> In *RStudio* folks will often utilize the keyboard shortcut: `Alt` + `-` (that is pushing the `Alt` and `minus` keys together or the `Option` and `minus` keys if you are on a Mac).
+> In *RStudio* folks will often utilize the **keyboard shortcut**: `Alt`/`Option` + `-` (that is pushing the `Alt` and `minus` keys together on a PC or the `Option` and `minus` keys if you are on a Mac).
 
 
 ## Side note about object names... {.nb-slide}
 
-Object names cannot start with a digit and can not contain certain other "special" characters such as a comma or a space. 
+Object names can be anything you want with a couple of notable exceptions. They cannot start with a digit and can not contain certain "special" characters such as a comma or a space. 
 
 </br>
 You will be wise to adopt a [convention for demarcating words](http://en.wikipedia.org/wiki/Snake_case) in names so as to avoid spaces, for example:
@@ -185,7 +187,7 @@ R_rocks
 ```
 
 
-What happened? What about the 2nd line? Did you run both chunks? Can you fix this?
+What happened? What about the 2nd line? Did you run both chunks? Can you fix this? *Edit the last code chunk to fix the error here...*
 
 
 ## :key: Key point: {.key-slide}
@@ -193,7 +195,10 @@ What happened? What about the 2nd line? Did you run both chunks? Can you fix thi
 When we program we enter into an implicit contract with the computer. The computer will do tedious computation for you. In return, you will be completely precise in your instructions. 
 
 </br>
-Typos matter. Case matters. The order that you do things matters. 
+
+- Typos matter. 
+- Case matters.
+- The order that you do things matters. 
 
 </br>
 [**Therefore get better at typing!**]{style="color:#ff5a5a"}
@@ -202,7 +207,7 @@ Typos matter. Case matters. The order that you do things matters.
 
 ## Functions
 
-Being productive in R is all about using functions - we call functions when we read a dataset, perform a statistical analysis, make a fancy visualization or do just about anything else. 
+Being productive in R is all about using **functions** - we call functions when we read a dataset, perform a statistical analysis, make a fancy visualization or do just about anything else. 
 
 </br>
 All functions are accessed like so:
@@ -224,7 +229,7 @@ Let's try using the `seq()` function, which makes regular sequences of numbers:
 ```{webr}
 #| exercise: ex_4
 #| autorun: false
-seq(1,10)  
+seq(from=1, to=10, by=3)  
 ```
 
 </br>
@@ -233,7 +238,7 @@ You can always access the help/documentation of a particular function by using t
 
 ## :key: Key point: {.key-slide}
 
-The previous `seq(1, 10)` example above also demonstrates something about how R resolves function arguments. 
+Try editing the previous code chunk to read `seq(1, 10)`. This will happely work and demonstrates something about how R resolves function arguments when they are not spelled out with `=` signs. 
 
 </br>
 You can always specify in `name = value` form e.g. `seq(from=1, to=10, by=1)`. But if you do not, R attempts to resolve by position (1st argument, 2nd argument, etc.). 
@@ -417,9 +422,26 @@ R reports errors, warnings, and messages in a glaring red font, which makes it s
 </br>
 Over time we will learn more "R speak" and get more comfortable generally working in the console. Again Google and ChatGPT can help you interpret these important messages.
 
+## Finally, a more advanced example...
+
+Can you figure out what the following code does and discuss it with your neighbor?
+
+```{webr}
+#| max-lines: 7
+# Two nucleotide sequences
+a <- c("A","G","G","A","C","G","T","A")
+b <- c("A","G","A","A","C","T","T","A")
+
+ind <- which(a!=b)
+paste(a[ind], ind, b[ind], sep="")
+```
+- What are the tree `functions()` in this code chunk and what do they do?
+- Can you change this code to print out the identical nucleotides?
+
+
 # End of Part 1
 Well done for getting this far !  
-Feel free to close this now :grinning:
+Feel free to check out our [R cheat sheet](https://bioboot.github.io/bimm143_W25/class-material/base-r.pdf) and/or close this now :grinning:
 
 ## {background-image="images/title_slide.png"}
 
