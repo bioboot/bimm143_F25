@@ -639,6 +639,7 @@ A topical mini-project using web-scraping, JSON based APIs and advanced dplyr an
 
 - Lab: [Investigating pertussis resurgence mini-project](https://bioboot.github.io/cmi-pb_teaching/introduction/intro_to_cmi-pb.html){:.no-push-state}{:target="_blank"} **submit to gradescope**,  
 - Additional resources:
+  * Slides [Large PDF]({{ site.baseurl }}/class-material/lecture18_BIMM143-large.pdf){:.no-push-state}{:target="_blank"},   
   * CDC pertussis [case tracking data](https://www.cdc.gov/pertussis/php/surveillance/pertussis-cases-by-year.html){:.no-push-state}{:target="_blank"},
   * Timeline of [major milestones in our history with Pertussis](https://bioboot.github.io/cmi-pb_teaching/timeline/pertussis_timeline.html){:.no-push-state}{:target="_blank"},  
   * The [CMI-PB resource]( https://www.cmi-pb.org/){:.no-push-state}{:target="_blank"},  
