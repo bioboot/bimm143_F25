@@ -12,7 +12,7 @@ barry:
     : [Prof. Barry J. Grant](http://thegrantlab.org/) (Email: <bjgrant@ucsd.edu>)
 
     Instructional Assistants
-    : Benjie Miao (Email: <bmiao@ucsd.edu>)    
+    : Aria Loduca (Email: <floduca@ucsd.edu>)    
 
     Course Syllabus
     : [Fall 2025 (PDF)](https://bioboot.github.io/bimm143_F25/class-material/BIMM143_F25_syllabus.pdf){:.no-push-state}
@@ -34,8 +34,8 @@ barry:
   # Comment/uncommet to show/hide
   # Icons appear in order, can be rearranged:
   social:
-    piazza:          &piazza  https://piazza.com/ucsd/fall2025/bimm143/
-    gradescope:      &gradescope https://www.gradescope.com/courses/1001084    
+    piazza:          &piazza   https://piazza.com/ucsd/fall2025/bimm143/info  
+    gradescope:      &gradescope https://www.gradescope.com/courses/1118435    
     youtube:         &youtube https://www.youtube.com/playlist?list=PLtYfizZe9rnrI-6BFsUqKTX7F2zebfCIQ
     email:           mailto:<bjgrant@ucsd.edu>
     #twitter:         barryjgrant
