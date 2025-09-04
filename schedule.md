@@ -21,10 +21,9 @@ For the Fall 2025 quarter we will meet twice a week on Tuesday and Thursday at 9
 | 5  | Tue 10/14/25  | [**Data exploration and visualization in R**](#5) <br> The exploratory data analysis mindset, Data visualization best practices, Simple base graphics (including scatterplots, histograms, bar graphs, dot chats, boxplots and heatmaps), Building more complex charts with ggplot.                                                                                                                                                                                                                                                       |
 | 6  | Thu 10/16/25 | [**Why, when and how of writing your own R functions**](#6) <br> The basics of writing your own functions that promote code robustness, reduce duplication and facilitate code re-use. Extending functionality and utility with R packages from CRAN and BioConductor, Working with Bio3D for molecular data.                                                                                                                                                                                                                                                                                       |
 | 7  | Tue 10/21/25 | [**Introduction to machine learning for Bioinformatics 1**](#7) <br> Unsupervised learning, K-means clustering, Hierarchical clustering, Heatmap representations. Dimensionality reduction, Principal Component Analysis (PCA)                                                                                                                                                                                                                                            |
-| 8  | Thu 10/23/25 | [**Unsupervised learning mini-project**](#8) <br> Longer hands-on session with unsupervised learning analysis of cancer cells further highlighting Practical considerations and best practices for the analysis and visualization of high dimensional datasets                                                                                                                                                                                                            |
-
-| 09 | Tue 10/28/25 | [**Structural Bioinformatics (pt1)**](#10) <br> Comparative structure and sequence analysis. Working with sequence and structure data in R. (If time allows) Protein motion and conformational variants, Molecular simulation and small molecule docking and drug optimization.                                                                                                                                                                                                                                             |
-| 10 | Thu 10/30/25 | [**Halloween Candy Mini-Project**](#9) <br> A fun and topical mini-project with unsupervised learning analysis of halloween_candy, Practical considerations and best practices for the exploratory analysis and visualization of high dimensional datasets.                                                                                                                                                                              |
+| 8  | Thu 10/23/25 | [**Unsupervised learning mini-project**](#8) <br> Longer hands-on session with unsupervised learning analysis of cancer cells further highlighting Practical considerations and best practices for the analysis and visualization of high dimensional datasets                                                                                                                             |
+| 09 | Tue 10/28/25 | [**Structural Bioinformatics (pt1)**](#9) <br> Comparative structure and sequence analysis. Working with sequence and structure data in R. (If time allows) Protein motion and conformational variants, Molecular simulation and small molecule docking and drug optimization.                                                                                                                                                                                                                                             |
+| 10 | Thu 10/30/25 | [**Halloween Candy Mini-Project**](#10) <br> A fun and topical mini-project with unsupervised learning analysis of halloween_candy, Practical considerations and best practices for the exploratory analysis and visualization of high dimensional datasets.                                                                                                                                                                              |
 | 11| Tue 11/04/25 | [**Structural Bioinformatics (pt2 AlphaFold)**](#11) <br> The new age of structural biology. Structure prediction with AlphaFold2 and the importance of learning from Multiple Sequence Alignments (MSAs). ESM-Fold and large language models for protein structure.                                                                                                                                               |
 | 12 | Thu 11/06/25 | [**Genome informatics and high throughput sequencing**](#12) <br> Searching genes and gene functions, Genome databases, Variation in the Genome, High-throughput sequencing technologies, biological applications, bioinformatics analysis methods; The Galaxy platform along with resources from the EBI & UCSC <br> **N.B.** This is an **online only session**\!                                                                                                                                                                                  |
 | 13  | Tue 11/11/25 | **Veterans Day Holiday** [**Transcriptomics, RNA-Seq analysis, and the interpretation of gene lists**](#13) <br> RNA-Seq aligners, Differential expression tests, RNA-Seq statistics, Counts and FPKMs and avoiding P-value misuse, Hands-on analysis of RNA-Seq data with R. Gene functional annotation, Functional databases KEGG, InterPro, GO ontologies and functional enrichment.                                                                                                                                                                                                                                               |
@@ -205,7 +204,7 @@ Detecting remote sequence similarity, Substitution matrices, Database searching 
 **Homework**:   
 - [Questions](https://docs.google.com/document/d/1AjrDB-XdfZyJUZmA-_KEqkNB5P1iUrMkKyj8QjGRM50/copy){:.no-push-state}{:target="_blank"} click and select "make a copy" then follow instructions,   
 - Submit your completed *`03_Lab_report`* (i.e. filled in PDF form) to [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
-- **DataCamp**: Sign-up to our [**25_bioinformatics** group/organization](https://app.datacamp.com/groups/25_bioinformatics/dashboard){:.no-push-state}{:target="_blank"} via the link in your UCSD email and **start** (you do not have to finish yet) [**Introduction to R!**](https://learn.datacamp.com/courses/free-introduction-to-r){:.no-push-state}{:target="_blank"} (we will complete this next week).  
+- **DataCamp**: Sign-up to our [**25_bioinformatics** group/organization](https://app.datacamp.com/groups/26_bioinformatics/dashboard){:.no-push-state}{:target="_blank"} via the link in your UCSD email and **start** (you do not have to finish yet) [**Introduction to R!**](https://learn.datacamp.com/courses/free-introduction-to-r){:.no-push-state}{:target="_blank"} (we will complete this next week).  
 - [RStudio and R download and setup]({{ site.baseurl }}/setup/).  
 
 
@@ -244,7 +243,7 @@ Why do we use R for bioinformatics? R language basics and the RStudio IDE, Major
 **Homework**:   
 - Answer the *`04_HW_quiz`* questions on [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
 - Submit your rendered *`04_Lab_report`* (i.e. a PDF report generated from R) to [GradeScope]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"},  
-- **DataCamp**: Sign-up to our **25_bioinformatic group/organization** via the link in your UCSD email and **complete** [**Introduction to R!**](https://learn.datacamp.com/courses/free-introduction-to-r){:.no-push-state}{:target="_blank"} (4hrs).  
+- **DataCamp**: Sign-up to our **26_bioinformatics group/organization** via the link in your UCSD email and **complete** [**Introduction to R!**](https://learn.datacamp.com/courses/free-introduction-to-r){:.no-push-state}{:target="_blank"} (4hrs).  
     
 
 
@@ -403,21 +402,9 @@ Unsupervised learning, supervised learning and reinforcement learning; Focus on 
 
 
 ---
-<a name="9"></a>
-## 9: Halloween Candy Mini-Project
+<a name="9"></a> 
 
-**Topics:** 
-A fun and topical mini-project with unsupervised learning analysis of halloween_candy, Practical considerations and best practices for the analysis and visualization of high dimensional datasets.  
-
-- Lab: [Mini-Project: Exploratory analysis of Halloween cand]({{ site.baseurl }}/class-material/lab09_Halloween_candy.html){:.no-push-state}{:target="_blank"}.   
-
-
-
-
----
-<a name="10"></a> 
-
-## 10: Structural Bioinformatics (pt1)      
+## 9: Structural Bioinformatics (pt1)      
 **Topics**: Protein structure function relationships, Protein structure and visualization resources, Modeling energy as a function of structure, Homology modeling, AlphaFold, Predicting functional dynamics, Inferring protein function from structure.
 
 **Goal**: 
@@ -428,10 +415,10 @@ A fun and topical mini-project with unsupervised learning analysis of halloween_
 - Be able to use the Bio3D package for exploratory analysis of protein  sequence-structure-function-dynamics relationships.    
 
 **Videos:**  
-- 10.1 - [Introduction to structural bioinformatics](https://www.youtube.com/watch?v=lLLXkdTl8aQ){:.no-push-state}{:target="_blank"},
-- 10.2 - [Visualization, interpretation and modeling of protein structure](https://www.youtube.com/watch?v=8GO9kUOPfMQ){:.no-push-state}{:target="_blank"},
+- 9.1 - [Introduction to structural bioinformatics](https://www.youtube.com/watch?v=lLLXkdTl8aQ){:.no-push-state}{:target="_blank"},
+- 9.2 - [Visualization, interpretation and modeling of protein structure](https://www.youtube.com/watch?v=8GO9kUOPfMQ){:.no-push-state}{:target="_blank"},
 
-- 10.3 - [The story of AlphaFold](https://www.youtube.com/watch?v=gg7WjuFs8F4){:.no-push-state}{:target="_blank"},  
+- 9.3 - [The story of AlphaFold](https://www.youtube.com/watch?v=gg7WjuFs8F4){:.no-push-state}{:target="_blank"},  
 
 
 
@@ -443,6 +430,18 @@ A fun and topical mini-project with unsupervised learning analysis of halloween_
 
 **Homework**:   
 - Questions.  
+
+
+---
+<a name="10"></a>
+## 10: Halloween Candy Mini-Project
+
+**Topics:** 
+A fun and topical mini-project with unsupervised learning analysis of halloween_candy, Practical considerations and best practices for the analysis and visualization of high dimensional datasets.  
+
+- Lab: [Mini-Project: Exploratory analysis of Halloween cand]({{ site.baseurl }}/class-material/lab09_Halloween_candy.html){:.no-push-state}{:target="_blank"}.   
+
+
 
 
 ---
