@@ -230,7 +230,8 @@ Why do we use R for bioinformatics? R language basics and the RStudio IDE, Major
 - 4.3 [Working with DataCamp](https://youtu.be/oO2RFvpHjDg){:.no-push-state}{:target="_blank"}  **N.B.** Use your UCSD email invite to sign up and visit our class group/organization.    
 
 **Supporting Material:**
-- Lecture Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
+- Presented Slides [Large PDF]({{ site.baseurl }}/class-material/slides_class4_bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Background Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
 - Cheat Sheet: [Base R overview](https://bioboot.github.io/bimm143_W25/class-material/base-r.pdf){:target="_blank"}{:.no-push-state},
 - Lab: [Hands-on section]({{ site.baseurl }}/class-material/r_intro/r_intro.html){:.no-push-state}{:target="_blank"},  
 - Lab: [Video walk-through](https://youtu.be/QQ7KPg2NnpY?t=1098){:target="_blank"}{:.no-push-state} focusing on introducing R data structures and core syntax,
