@@ -11,7 +11,7 @@ order: 6
 ## Homework:  
 Weekly homework will consist of online knowledge assessment **quizzes** and **application assignments** (a.k.a. "hands-on lab sections" and/or "mini projects"). From week 2 onward we will also have **DataCamp exercises** to be done at home together with pre-class reading and video screen-casts.    
 
-Generally for each class you will submit your completed lab reports or mini-projects as PDFs to [**GradeScope**]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"} and complete a GoogleForm based quiz.  
+Generally for each class you will submit your completed lab reports or mini-projects as PDFs to [**GradeScope**]({{ site.data.authors.corelinks.gradescope }}){:.no-push-state}{:target="_blank"} and complete a GradeScope or GoogleForm based quiz.  
 
 Specific grading criteria (assessment rubrics) for each homework will be given at the time of assignment. Weekly grades will be posted online to the class class [**GradeBook**]({{ site.data.authors.corelinks.gradebook }}){:.no-push-state}{:target="_blank"}. Each student is responsible for checking to ensure that a grade has been entered for their submissions. Documents submitted by email or google forms do not always arrive at their intended destination and late submissions will not be accepted after one week past the original due date. Collectively homework performance will account for 65% of the course grade.
 
