@@ -316,6 +316,8 @@ The why, when and how of writing your own R functions with worked examples. Furt
 - Lab supplement: [Hands-on section supplemental information]({{ site.baseurl }}/class-material/lecture06-BIMM143_W19.pdf){:.no-push-state}{:target="_blank"},   
 - Lab: Live screencast [video walk-through](https://youtu.be/Zr9BVGGhaNc){:target="_blank"}{:.no-push-state}.   
 - Extra: [Introductory tutorial on R packages](https://www.datacamp.com/community/tutorials/r-packages-guide){:.no-push-state}{:target="_blank"},  
+- LLM Guide: [**NoteBookLM**: R Foundations for Data Analysis and Visualization](https://notebooklm.google.com/notebook/b705e744-3827-4f56-8ac4-c428f774b0f9){:.no-push-state}{:target="_blank"},  
+- TritonGPT: [Custom course specific private LLM tailored for teaching](https://tritongpt.ucsd.edu/chat){:.no-push-state}{:target="_blank"} click *"Explore Assistants > BGGN213 Bioinformatics Lab Assistant > Chat"*,  
 - Student Hours: [{{ site.data.authors.corelinks.officetime }}]({{ site.data.authors.corelinks.officehours }}){:.no-push-state}{:target="_blank"},   
 - Feedback: [Muddy point assessment](https://forms.gle/Y8un1ziwe99GYq1r6){:.no-push-state}.  
 
