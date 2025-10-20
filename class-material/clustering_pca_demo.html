@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering & PCA Interactive Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo {
+            height: 150px;
+            width: 150px;
+            object-fit: contain;
+        }
+        
+        .title-section {
+            text-align: left;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f5f5f5;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            background: #e0e0e0;
+            border: none;
+        }
+        
+        .tab:hover {
+            background: #d0d0d0;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #667eea;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .demo-section {
+            display: none;
+        }
+        
+        .demo-section.active {
+            display: block;
+        }
+        
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            display: block;
+            margin: 20px auto;
+            background: white;
+        }
+        
+        #kmeansCanvas, #hierCanvas, #pcaCanvas {
+            cursor: crosshair;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #cutHeightValue {
+            min-width: 40px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 80px;
+            font-size: 1em;
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+        }
+        
+        select {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            background: white;
+            cursor: pointer;
+            min-width: 120px;
+        }
+        
+        label {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            line-height: 1.6;
+        }
+        
+        .info-box li {
+            margin: 5px 0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="https://bioboot.github.io/bimm143_F25/assets/img/logo.png" alt="BIMM143 Logo" class="logo">
+                <div class="title-section">
+                    <h1>BIMM143 Class 7 Visual Guide</h1>
+                    <p class="subtitle">Explore unsupervised learning concepts visually</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('kmeans')">K-Means Clustering</button>
+            <button class="tab" onclick="showTab('hierarchical')">Hierarchical Clustering</button>
+            <button class="tab" onclick="showTab('pca')">Principal Component Analysis</button>
+        </div>
+        
+        <div class="content">
+            <!-- K-Means Section -->
+            <div id="kmeans" class="demo-section active">
+                <div class="info-box">
+                    <h3>📌 K-Means Clustering</h3>
+                    <p><strong>Click on the canvas to add data points</strong>, then run k-means to see how the algorithm clusters your data!</p>
+                </div>
+                
+                <canvas id="kmeansCanvas" width="800" height="500"></canvas>
+                
+                <div class="controls">
+                    <div class="input-group">
+                        <label for="kValue">Number of clusters (k):</label>
+                        <input type="number" id="kValue" min="2" max="8" value="3">
+                    </div>
+                    <button onclick="runKMeans()">▶️ Run K-Means</button>
+                    <button onclick="stepKMeans()">⏭️ Step Through</button>
+                    <button onclick="clearKMeans()">🔄 Clear Points</button>
+                    <button onclick="generateRandomData()">🎲 Random Data</button>
+                </div>
+                
+                <div class="stats" id="kmeansStats"></div>
+                
+                <div class="info-box">
+                    <h3>📈 Scree Plot (Elbow Method)</h3>
+                    <p>Shows total within-cluster sum of squares for different k values. Look for the "elbow" to find optimal k!</p>
+                </div>
+                <canvas id="kmeansScree" width="800" height="300"></canvas>
+            </div>
+            
+            <!-- Hierarchical Clustering Section -->
+            <div id="hierarchical" class="demo-section">
+                <div class="info-box">
+                    <h3>🌳 Hierarchical Clustering</h3>
+                    <p><strong>Click to add points</strong>, then watch the dendrogram build as clusters merge!</p>
+                    <p style="margin-top: 10px;"><strong>Linkage Methods:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li><strong>Complete:</strong> Uses largest distance between any two points in clusters</li>
+                        <li><strong>Single:</strong> Uses smallest distance between any two points in clusters</li>
+                        <li><strong>Average:</strong> Uses average distance between all pairs of points</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>✂️ Cut the Tree:</strong> After building the dendrogram, use the slider to cut at different heights and see different cluster groupings! Points will be color-coded by cluster.</p>
+                </div>
+                
+                <canvas id="hierCanvas" width="800" height="500"></canvas>
+                
+                <div class="controls">
+                    <div class="input-group">
+                        <label for="linkageMethod">Linkage Method:</label>
+                        <select id="linkageMethod" onchange="if(hierPoints.length >= 2) runHierarchical()">
+                            <option value="complete">Complete</option>
+                            <option value="single">Single</option>
+                            <option value="average">Average</option>
+                        </select>
+                    </div>
+                    <button onclick="runHierarchical()">▶️ Build Dendrogram</button>
+                    <button onclick="clearHierarchical()">🔄 Clear Points</button>
+                    <button onclick="generateHierData()">🎲 Random Data</button>
+                </div>
+                
+                <div class="controls" id="cutControls" style="display: none;">
+                    <div class="input-group">
+                        <label for="cutHeight">Cut Height:</label>
+                        <input type="range" id="cutHeight" min="0" max="100" value="50" 
+                               oninput="updateCut()" style="width: 200px;">
+                        <span id="cutHeightValue">50</span>
+                    </div>
+                    <button onclick="resetCut()">Reset Cut</button>
+                </div>
+                
+                <div class="stats" id="hierStats"></div>
+            </div>
+            
+            <!-- PCA Section -->
+            <div id="pca" class="demo-section">
+                <div class="info-box">
+                    <h3>📊 Principal Component Analysis (PCA)</h3>
+                    <p><strong>Click on the canvas to add data points</strong> or generate correlated data, then see how PCA finds the principal components!</p>
+                </div>
+                
+                <canvas id="pcaCanvas" width="800" height="500"></canvas>
+                
+                <div class="controls">
+                    <button onclick="generatePCAData()">🎲 Generate Random Data</button>
+                    <button onclick="runPCA()">▶️ Run PCA</button>
+                    <button onclick="clearPCA()">🔄 Clear</button>
+                </div>
+                
+                <div class="stats" id="pcaStats"></div>
+                
+                <div class="info-box">
+                    <h3>📈 Scree Plot</h3>
+                    <p>Shows the percentage of variance explained by each principal component</p>
+                </div>
+                <canvas id="pcaScree" width="800" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            document.querySelectorAll('.demo-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // K-Means Implementation
+        let kmeansCanvas = document.getElementById('kmeansCanvas');
+        let kmeansCtx = kmeansCanvas.getContext('2d');
+        let kmeansPoints = [];
+        let kmeansCentroids = [];
+        let kmeansAssignments = [];
+        let kmeansColors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
+        let kmeansIterations = 0;
+
+        kmeansCanvas.addEventListener('click', (e) => {
+            const rect = kmeansCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            kmeansPoints.push({x, y});
+            drawKMeans();
+        });
+
+        function drawKMeans() {
+            kmeansCtx.clearRect(0, 0, kmeansCanvas.width, kmeansCanvas.height);
+            
+            kmeansPoints.forEach((point, i) => {
+                kmeansCtx.fillStyle = kmeansAssignments[i] !== undefined ? 
+                    kmeansColors[kmeansAssignments[i]] : '#333';
+                kmeansCtx.beginPath();
+                kmeansCtx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+                kmeansCtx.fill();
+            });
+            
+            kmeansCentroids.forEach((centroid, i) => {
+                kmeansCtx.fillStyle = kmeansColors[i];
+                kmeansCtx.strokeStyle = '#000';
+                kmeansCtx.lineWidth = 3;
+                kmeansCtx.beginPath();
+                kmeansCtx.arc(centroid.x, centroid.y, 12, 0, Math.PI * 2);
+                kmeansCtx.fill();
+                kmeansCtx.stroke();
+                
+                kmeansCtx.strokeStyle = '#fff';
+                kmeansCtx.lineWidth = 2;
+                kmeansCtx.beginPath();
+                kmeansCtx.moveTo(centroid.x - 5, centroid.y - 5);
+                kmeansCtx.lineTo(centroid.x + 5, centroid.y + 5);
+                kmeansCtx.moveTo(centroid.x + 5, centroid.y - 5);
+                kmeansCtx.lineTo(centroid.x - 5, centroid.y + 5);
+                kmeansCtx.stroke();
+            });
+        }
+
+        function runKMeans() {
+            if (kmeansPoints.length < 2) {
+                alert('Please add at least 2 points!');
+                return;
+            }
+            
+            const k = parseInt(document.getElementById('kValue').value);
+            initializeCentroids(k);
+            
+            let changed = true;
+            kmeansIterations = 0;
+            const maxIterations = 100;
+            
+            while (changed && kmeansIterations < maxIterations) {
+                changed = assignPointsToClusters();
+                updateCentroids();
+                kmeansIterations++;
+                drawKMeans();
+            }
+            
+            updateKMeansStats();
+        }
+
+        function stepKMeans() {
+            if (kmeansCentroids.length === 0) {
+                const k = parseInt(document.getElementById('kValue').value);
+                initializeCentroids(k);
+                kmeansIterations = 0;
+            }
+            
+            assignPointsToClusters();
+            updateCentroids();
+            kmeansIterations++;
+            drawKMeans();
+            updateKMeansStats();
+        }
+
+        function initializeCentroids(k) {
+            kmeansCentroids = [];
+            for (let i = 0; i < k; i++) {
+                const randomPoint = kmeansPoints[Math.floor(Math.random() * kmeansPoints.length)];
+                kmeansCentroids.push({
+                    x: randomPoint.x + (Math.random() - 0.5) * 50,
+                    y: randomPoint.y + (Math.random() - 0.5) * 50
+                });
+            }
+        }
+
+        function assignPointsToClusters() {
+            let changed = false;
+            kmeansPoints.forEach((point, i) => {
+                let minDist = Infinity;
+                let cluster = 0;
+                
+                kmeansCentroids.forEach((centroid, j) => {
+                    const dist = Math.sqrt((point.x - centroid.x) ** 2 + (point.y - centroid.y) ** 2);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        cluster = j;
+                    }
+                });
+                
+                if (kmeansAssignments[i] !== cluster) {
+                    changed = true;
+                    kmeansAssignments[i] = cluster;
+                }
+            });
+            return changed;
+        }
+
+        function updateCentroids() {
+            kmeansCentroids.forEach((centroid, i) => {
+                const clusterPoints = kmeansPoints.filter((_, j) => kmeansAssignments[j] === i);
+                if (clusterPoints.length > 0) {
+                    centroid.x = clusterPoints.reduce((sum, p) => sum + p.x, 0) / clusterPoints.length;
+                    centroid.y = clusterPoints.reduce((sum, p) => sum + p.y, 0) / clusterPoints.length;
+                }
+            });
+        }
+
+        function updateKMeansStats() {
+            const statsDiv = document.getElementById('kmeansStats');
+            const k = kmeansCentroids.length;
+            const clusterSizes = new Array(k).fill(0);
+            kmeansAssignments.forEach(a => clusterSizes[a]++);
+            
+            statsDiv.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">Points</div>
+                    <div class="stat-value">${kmeansPoints.length}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Clusters</div>
+                    <div class="stat-value">${k}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Iterations</div>
+                    <div class="stat-value">${kmeansIterations}</div>
+                </div>
+            `;
+            
+            if (kmeansPoints.length >= 2) {
+                drawKMeansScreePlot();
+            }
+        }
+
+        function drawKMeansScreePlot() {
+            const screeCanvas = document.getElementById('kmeansScree');
+            const screeCtx = screeCanvas.getContext('2d');
+            const maxK = Math.min(8, kmeansPoints.length);
+            
+            if (maxK < 2) return;
+            
+            const wcssValues = [];
+            for (let k = 1; k <= maxK; k++) {
+                const wcss = calculateWCSS(k);
+                wcssValues.push(wcss);
+            }
+            
+            screeCtx.clearRect(0, 0, screeCanvas.width, screeCanvas.height);
+            
+            const padding = 60;
+            const plotWidth = screeCanvas.width - 2 * padding;
+            const plotHeight = screeCanvas.height - 2 * padding;
+            const maxWCSS = Math.max(...wcssValues);
+            
+            screeCtx.strokeStyle = '#333';
+            screeCtx.lineWidth = 2;
+            screeCtx.beginPath();
+            screeCtx.moveTo(padding, padding);
+            screeCtx.lineTo(padding, screeCanvas.height - padding);
+            screeCtx.lineTo(screeCanvas.width - padding, screeCanvas.height - padding);
+            screeCtx.stroke();
+            
+            screeCtx.strokeStyle = '#e0e0e0';
+            screeCtx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (plotHeight / 5) * i;
+                screeCtx.beginPath();
+                screeCtx.moveTo(padding, y);
+                screeCtx.lineTo(screeCanvas.width - padding, y);
+                screeCtx.stroke();
+            }
+            
+            screeCtx.strokeStyle = '#667eea';
+            screeCtx.lineWidth = 3;
+            screeCtx.beginPath();
+            
+            wcssValues.forEach((wcss, i) => {
+                const x = padding + (plotWidth / (maxK - 1)) * i;
+                const y = screeCanvas.height - padding - (wcss / maxWCSS) * plotHeight;
+                
+                if (i === 0) {
+                    screeCtx.moveTo(x, y);
+                } else {
+                    screeCtx.lineTo(x, y);
+                }
+            });
+            screeCtx.stroke();
+            
+            wcssValues.forEach((wcss, i) => {
+                const x = padding + (plotWidth / (maxK - 1)) * i;
+                const y = screeCanvas.height - padding - (wcss / maxWCSS) * plotHeight;
+                
+                screeCtx.fillStyle = '#764ba2';
+                screeCtx.beginPath();
+                screeCtx.arc(x, y, 6, 0, Math.PI * 2);
+                screeCtx.fill();
+                
+                screeCtx.fillStyle = '#333';
+                screeCtx.font = '14px sans-serif';
+                screeCtx.textAlign = 'center';
+                screeCtx.fillText((i + 1).toString(), x, screeCanvas.height - padding + 25);
+            });
+            
+            screeCtx.fillStyle = '#333';
+            screeCtx.font = 'bold 16px sans-serif';
+            screeCtx.textAlign = 'center';
+            screeCtx.fillText('Number of Clusters (k)', screeCanvas.width / 2, screeCanvas.height - 10);
+            
+            screeCtx.save();
+            screeCtx.translate(20, screeCanvas.height / 2);
+            screeCtx.rotate(-Math.PI / 2);
+            screeCtx.fillText('Total Within-Cluster SS', 0, 0);
+            screeCtx.restore();
+            
+            screeCtx.textAlign = 'right';
+            screeCtx.font = '12px sans-serif';
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (plotHeight / 5) * (5 - i);
+                const value = ((maxWCSS / 5) * i).toFixed(0);
+                screeCtx.fillText(value, padding - 10, y + 4);
+            }
+        }
+
+        function calculateWCSS(k) {
+            const tempCentroids = [];
+            for (let i = 0; i < k; i++) {
+                const randomPoint = kmeansPoints[Math.floor(Math.random() * kmeansPoints.length)];
+                tempCentroids.push({
+                    x: randomPoint.x + (Math.random() - 0.5) * 50,
+                    y: randomPoint.y + (Math.random() - 0.5) * 50
+                });
+            }
+            
+            for (let iter = 0; iter < 20; iter++) {
+                const tempAssignments = [];
+                
+                kmeansPoints.forEach(point => {
+                    let minDist = Infinity;
+                    let cluster = 0;
+                    
+                    tempCentroids.forEach((centroid, j) => {
+                        const dist = Math.sqrt((point.x - centroid.x) ** 2 + (point.y - centroid.y) ** 2);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            cluster = j;
+                        }
+                    });
+                    
+                    tempAssignments.push(cluster);
+                });
+                
+                tempCentroids.forEach((centroid, i) => {
+                    const clusterPoints = kmeansPoints.filter((_, j) => tempAssignments[j] === i);
+                    if (clusterPoints.length > 0) {
+                        centroid.x = clusterPoints.reduce((sum, p) => sum + p.x, 0) / clusterPoints.length;
+                        centroid.y = clusterPoints.reduce((sum, p) => sum + p.y, 0) / clusterPoints.length;
+                    }
+                });
+            }
+            
+            let wcss = 0;
+            
+            kmeansPoints.forEach(point => {
+                let minDist = Infinity;
+                let cluster = 0;
+                
+                tempCentroids.forEach((centroid, j) => {
+                    const dist = Math.sqrt((point.x - centroid.x) ** 2 + (point.y - centroid.y) ** 2);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        cluster = j;
+                    }
+                });
+                
+                const centroid = tempCentroids[cluster];
+                wcss += (point.x - centroid.x) ** 2 + (point.y - centroid.y) ** 2;
+            });
+            
+            return wcss;
+        }
+
+        function clearKMeans() {
+            kmeansPoints = [];
+            kmeansCentroids = [];
+            kmeansAssignments = [];
+            kmeansIterations = 0;
+            drawKMeans();
+            document.getElementById('kmeansStats').innerHTML = '';
+            
+            const screeCanvas = document.getElementById('kmeansScree');
+            const screeCtx = screeCanvas.getContext('2d');
+            screeCtx.clearRect(0, 0, screeCanvas.width, screeCanvas.height);
+        }
+
+        function generateRandomData() {
+            clearKMeans();
+            const k = parseInt(document.getElementById('kValue').value);
+            
+            for (let i = 0; i < k; i++) {
+                const cx = 150 + Math.random() * 500;
+                const cy = 150 + Math.random() * 200;
+                const n = 15 + Math.floor(Math.random() * 15);
+                
+                for (let j = 0; j < n; j++) {
+                    kmeansPoints.push({
+                        x: cx + (Math.random() - 0.5) * 120,
+                        y: cy + (Math.random() - 0.5) * 120
+                    });
+                }
+            }
+            drawKMeans();
+            
+            if (kmeansPoints.length >= 2) {
+                drawKMeansScreePlot();
+            }
+        }
+
+        // Hierarchical Clustering
+        let hierCanvas = document.getElementById('hierCanvas');
+        let hierCtx = hierCanvas.getContext('2d');
+        let hierPoints = [];
+        let hierRootCluster = null;
+        let hierMaxHeight = 0;
+        let hierCutHeight = null;
+        let hierClusterColors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'];
+
+        hierCanvas.addEventListener('click', (e) => {
+            const rect = hierCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            hierPoints.push({x, y, id: hierPoints.length});
+            drawHierarchical();
+        });
+
+        function drawHierarchical() {
+            hierCtx.clearRect(0, 0, hierCanvas.width, hierCanvas.height);
+            
+            hierPoints.forEach(point => {
+                hierCtx.fillStyle = '#667eea';
+                hierCtx.beginPath();
+                hierCtx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+                hierCtx.fill();
+            });
+        }
+
+        function runHierarchical() {
+            if (hierPoints.length < 2) {
+                alert('Please add at least 2 points!');
+                return;
+            }
+            
+            const linkageMethod = document.getElementById('linkageMethod').value;
+            
+            // Perform hierarchical clustering
+            const clusters = hierPoints.map((p, i) => ({
+                points: [i],
+                center: {x: p.x, y: p.y},
+                height: 0,
+                left: null,
+                right: null
+            }));
+            
+            const mergeHistory = [];
+            
+            while (clusters.length > 1) {
+                let minDist = Infinity;
+                let mergeI = 0;
+                let mergeJ = 1;
+                
+                // Find closest pair of clusters based on linkage method
+                for (let i = 0; i < clusters.length; i++) {
+                    for (let j = i + 1; j < clusters.length; j++) {
+                        const dist = calculateClusterDistance(
+                            clusters[i], 
+                            clusters[j], 
+                            linkageMethod
+                        );
+                        if (dist < minDist) {
+                            minDist = dist;
+                            mergeI = i;
+                            mergeJ = j;
+                        }
+                    }
+                }
+                
+                // Merge the two closest clusters
+                const newCluster = {
+                    points: [...clusters[mergeI].points, ...clusters[mergeJ].points],
+                    center: {
+                        x: (clusters[mergeI].center.x + clusters[mergeJ].center.x) / 2,
+                        y: (clusters[mergeI].center.y + clusters[mergeJ].center.y) / 2
+                    },
+                    height: minDist,
+                    left: clusters[mergeI],
+                    right: clusters[mergeJ]
+                };
+                
+                mergeHistory.push(newCluster);
+                
+                // Remove merged clusters and add new one
+                const removed = [clusters[mergeI], clusters[mergeJ]];
+                clusters.splice(Math.max(mergeI, mergeJ), 1);
+                clusters.splice(Math.min(mergeI, mergeJ), 1);
+                clusters.push(newCluster);
+            }
+            
+            // Store root cluster and max height globally
+            hierRootCluster = clusters[0];
+            hierMaxHeight = clusters[0].height;
+            
+            // Show cut controls
+            document.getElementById('cutControls').style.display = 'flex';
+            const cutSlider = document.getElementById('cutHeight');
+            cutSlider.max = Math.ceil(hierMaxHeight);
+            cutSlider.value = Math.ceil(hierMaxHeight / 2);
+            hierCutHeight = null;
+            
+            drawHierarchicalDendrogram();
+        }
+        
+        function drawHierarchicalDendrogram() {
+            // Draw the visualization
+            hierCtx.clearRect(0, 0, hierCanvas.width, hierCanvas.height);
+            
+            const dendroX = 500;
+            const dendroWidth = 280;
+            
+            // Get cluster assignments if cut is active
+            let clusterAssignments = null;
+            if (hierCutHeight !== null) {
+                clusterAssignments = getClustersAtHeight(hierRootCluster, hierCutHeight);
+            }
+            
+            // Optimize leaf ordering to minimize line crossings
+            const orderedLeaves = optimizeLeafOrder(hierRootCluster);
+            const spacing = 400 / hierPoints.length;
+            
+            // Create mapping from original index to dendrogram position
+            const leafPositions = {};
+            orderedLeaves.forEach((leafIdx, i) => {
+                leafPositions[leafIdx] = 50 + i * spacing;
+            });
+            
+            // Draw points on the left with cluster colors and connection lines
+            orderedLeaves.forEach((originalIdx, i) => {
+                const point = hierPoints[originalIdx];
+                const dendroY = 50 + i * spacing;
+                
+                if (clusterAssignments) {
+                    const clusterIdx = clusterAssignments.findIndex(cluster => cluster.includes(originalIdx));
+                    hierCtx.fillStyle = hierClusterColors[clusterIdx % hierClusterColors.length];
+                } else {
+                    hierCtx.fillStyle = '#667eea';
+                }
+                
+                hierCtx.beginPath();
+                hierCtx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+                hierCtx.fill();
+                
+                // Connection line from point to dendrogram
+                hierCtx.strokeStyle = '#ddd';
+                hierCtx.lineWidth = 1;
+                hierCtx.beginPath();
+                hierCtx.moveTo(point.x, point.y);
+                hierCtx.lineTo(dendroX, dendroY);
+                hierCtx.stroke();
+            });
+            
+            // Draw dendrogram
+            function drawDendrogramNode(node) {
+                if (!node.left && !node.right) {
+                    // Leaf node
+                    const leafIndex = node.points[0];
+                    return leafPositions[leafIndex];
+                }
+                
+                // Internal node
+                const leftY = drawDendrogramNode(node.left);
+                const rightY = drawDendrogramNode(node.right);
+                
+                const nodeX = dendroX + (node.height / hierMaxHeight) * dendroWidth;
+                const nodeY = (leftY + rightY) / 2;
+                
+                // Determine color based on cut height
+                let branchColor = '#764ba2';
+                if (hierCutHeight !== null && node.height > hierCutHeight) {
+                    branchColor = '#999';
+                }
+                
+                hierCtx.strokeStyle = branchColor;
+                hierCtx.lineWidth = 2;
+                
+                // Draw left branch
+                const leftX = node.left.left ? dendroX + (node.left.height / hierMaxHeight) * dendroWidth : dendroX;
+                hierCtx.beginPath();
+                hierCtx.moveTo(leftX, leftY);
+                hierCtx.lineTo(nodeX, leftY);
+                hierCtx.lineTo(nodeX, nodeY);
+                hierCtx.stroke();
+                
+                // Draw right branch
+                const rightX = node.right.left ? dendroX + (node.right.height / hierMaxHeight) * dendroWidth : dendroX;
+                hierCtx.beginPath();
+                hierCtx.moveTo(rightX, rightY);
+                hierCtx.lineTo(nodeX, rightY);
+                hierCtx.lineTo(nodeX, nodeY);
+                hierCtx.stroke();
+                
+                return nodeY;
+            }
+            
+            // Draw the complete dendrogram tree
+            if (hierRootCluster.left) {
+                drawDendrogramNode(hierRootCluster);
+            }
+            
+            // Draw cut line if active
+            if (hierCutHeight !== null) {
+                const cutX = dendroX + (hierCutHeight / hierMaxHeight) * dendroWidth;
+                hierCtx.strokeStyle = '#FF6B6B';
+                hierCtx.lineWidth = 3;
+                hierCtx.setLineDash([10, 5]);
+                hierCtx.beginPath();
+                hierCtx.moveTo(cutX, 30);
+                hierCtx.lineTo(cutX, hierCanvas.height - 30);
+                hierCtx.stroke();
+                hierCtx.setLineDash([]);
+                
+                // Cut line label
+                hierCtx.fillStyle = '#FF6B6B';
+                hierCtx.font = 'bold 14px sans-serif';
+                hierCtx.textAlign = 'center';
+                hierCtx.fillText(`Cut: ${hierCutHeight.toFixed(1)}`, cutX, hierCanvas.height - 10);
+            }
+            
+            // Draw height axis
+            hierCtx.strokeStyle = '#333';
+            hierCtx.lineWidth = 1;
+            hierCtx.beginPath();
+            hierCtx.moveTo(dendroX, 30);
+            hierCtx.lineTo(dendroX, hierCanvas.height - 30);
+            hierCtx.stroke();
+            
+            // Height labels
+            hierCtx.fillStyle = '#333';
+            hierCtx.font = '12px sans-serif';
+            hierCtx.textAlign = 'center';
+            for (let i = 0; i <= 4; i++) {
+                const x = dendroX + (dendroWidth / 4) * i;
+                const height = (hierMaxHeight / 4) * i;
+                
+                hierCtx.beginPath();
+                hierCtx.moveTo(x, 30);
+                hierCtx.lineTo(x, 35);
+                hierCtx.stroke();
+                
+                hierCtx.fillText(height.toFixed(0), x, 20);
+            }
+            
+            // Axis label with linkage method
+            const linkageMethod = document.getElementById('linkageMethod').value;
+            hierCtx.font = 'bold 14px sans-serif';
+            hierCtx.fillText(`Distance (${linkageMethod} linkage)`, dendroX + dendroWidth / 2, 10);
+            
+            // Display stats
+            let numClusters = 1;
+            if (clusterAssignments) {
+                numClusters = clusterAssignments.length;
+            }
+            
+            document.getElementById('hierStats').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">Points</div>
+                    <div class="stat-value">${hierPoints.length}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Linkage Method</div>
+                    <div class="stat-value">${linkageMethod.charAt(0).toUpperCase() + linkageMethod.slice(1)}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Clusters at Cut</div>
+                    <div class="stat-value">${numClusters}</div>
+                </div>
+            `;
+        }
+        
+        function optimizeLeafOrder(node) {
+            // Recursively order leaves to minimize line crossings
+            // This uses an in-order traversal weighted by spatial position
+            
+            if (!node.left && !node.right) {
+                // Leaf node
+                return [node.points[0]];
+            }
+            
+            // Get leaves from both subtrees
+            const leftLeaves = node.left ? optimizeLeafOrder(node.left) : [];
+            const rightLeaves = node.right ? optimizeLeafOrder(node.right) : [];
+            
+            // Calculate average positions for ordering
+            const getAvgY = (leaves) => {
+                const sum = leaves.reduce((acc, idx) => acc + hierPoints[idx].y, 0);
+                return sum / leaves.length;
+            };
+            
+            const leftAvgY = leftLeaves.length > 0 ? getAvgY(leftLeaves) : 0;
+            const rightAvgY = rightLeaves.length > 0 ? getAvgY(rightLeaves) : 0;
+            
+            // Order subtrees by their average Y position to minimize crossings
+            if (leftAvgY <= rightAvgY) {
+                return [...leftLeaves, ...rightLeaves];
+            } else {
+                return [...rightLeaves, ...leftLeaves];
+            }
+        }
+        
+        function getClustersAtHeight(node, cutHeight) {
+            if (!node) return [];
+            
+            // If this node's height is below the cut, it's a cluster
+            if (node.height <= cutHeight) {
+                return [node.points];
+            }
+            
+            // Otherwise, recursively get clusters from children
+            const leftClusters = node.left ? getClustersAtHeight(node.left, cutHeight) : [];
+            const rightClusters = node.right ? getClustersAtHeight(node.right, cutHeight) : [];
+            
+            return [...leftClusters, ...rightClusters];
+        }
+        
+        function updateCut() {
+            const cutSlider = document.getElementById('cutHeight');
+            hierCutHeight = parseFloat(cutSlider.value);
+            document.getElementById('cutHeightValue').textContent = hierCutHeight.toFixed(1);
+            drawHierarchicalDendrogram();
+        }
+        
+        function resetCut() {
+            hierCutHeight = null;
+            const cutSlider = document.getElementById('cutHeight');
+            cutSlider.value = Math.ceil(hierMaxHeight / 2);
+            document.getElementById('cutHeightValue').textContent = cutSlider.value;
+            drawHierarchicalDendrogram();
+        }
+        
+        function calculateClusterDistance(cluster1, cluster2, method) {
+            if (method === 'single') {
+                // Single linkage: minimum distance between any two points
+                let minDist = Infinity;
+                for (let i of cluster1.points) {
+                    for (let j of cluster2.points) {
+                        const dist = Math.sqrt(
+                            (hierPoints[i].x - hierPoints[j].x) ** 2 +
+                            (hierPoints[i].y - hierPoints[j].y) ** 2
+                        );
+                        minDist = Math.min(minDist, dist);
+                    }
+                }
+                return minDist;
+            } else if (method === 'complete') {
+                // Complete linkage: maximum distance between any two points
+                let maxDist = 0;
+                for (let i of cluster1.points) {
+                    for (let j of cluster2.points) {
+                        const dist = Math.sqrt(
+                            (hierPoints[i].x - hierPoints[j].x) ** 2 +
+                            (hierPoints[i].y - hierPoints[j].y) ** 2
+                        );
+                        maxDist = Math.max(maxDist, dist);
+                    }
+                }
+                return maxDist;
+            } else if (method === 'average') {
+                // Average linkage: average distance between all pairs
+                let sumDist = 0;
+                let count = 0;
+                for (let i of cluster1.points) {
+                    for (let j of cluster2.points) {
+                        const dist = Math.sqrt(
+                            (hierPoints[i].x - hierPoints[j].x) ** 2 +
+                            (hierPoints[i].y - hierPoints[j].y) ** 2
+                        );
+                        sumDist += dist;
+                        count++;
+                    }
+                }
+                return sumDist / count;
+            }
+        }
+
+        function clearHierarchical() {
+            hierPoints = [];
+            hierRootCluster = null;
+            hierMaxHeight = 0;
+            hierCutHeight = null;
+            drawHierarchical();
+            document.getElementById('hierStats').innerHTML = '';
+            document.getElementById('cutControls').style.display = 'none';
+        }
+
+        function generateHierData() {
+            clearHierarchical();
+            const n = 6 + Math.floor(Math.random() * 6);
+            
+            for (let i = 0; i < n; i++) {
+                hierPoints.push({
+                    x: 100 + Math.random() * 300,
+                    y: 100 + Math.random() * 300,
+                    id: i
+                });
+            }
+            drawHierarchical();
+            
+            // Automatically build dendrogram after generating data
+            if (hierPoints.length >= 2) {
+                runHierarchical();
+            }
+        }
+
+        // PCA Implementation
+        let pcaCanvas = document.getElementById('pcaCanvas');
+        let pcaCtx = pcaCanvas.getContext('2d');
+        let pcaPoints = [];
+        let pcaPC1 = null;
+        let pcaPC2 = null;
+
+        pcaCanvas.addEventListener('click', (e) => {
+            const rect = pcaCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            pcaPoints.push({x, y});
+            
+            // Clear PCA results when manually adding points
+            pcaPC1 = null;
+            pcaPC2 = null;
+            
+            drawPCA();
+            
+            // Clear stats and scree plot
+            document.getElementById('pcaStats').innerHTML = '';
+            const screeCanvas = document.getElementById('pcaScree');
+            const screeCtx = screeCanvas.getContext('2d');
+            screeCtx.clearRect(0, 0, screeCanvas.width, screeCanvas.height);
+        });
+
+        function generatePCAData() {
+            pcaPoints = [];
+            pcaPC1 = null;
+            pcaPC2 = null;
+            const centerX = pcaCanvas.width / 2;
+            const centerY = pcaCanvas.height / 2;
+            const angle = Math.random() * Math.PI;
+            const n = 50;
+            
+            for (let i = 0; i < n; i++) {
+                const t = (Math.random() - 0.5) * 200;
+                const noise = (Math.random() - 0.5) * 40;
+                
+                const x = centerX + t * Math.cos(angle) + noise * Math.sin(angle);
+                const y = centerY + t * Math.sin(angle) - noise * Math.cos(angle);
+                
+                pcaPoints.push({x, y});
+            }
+            
+            drawPCA();
+            
+            const screeCanvas = document.getElementById('pcaScree');
+            const screeCtx = screeCanvas.getContext('2d');
+            screeCtx.clearRect(0, 0, screeCanvas.width, screeCanvas.height);
+        }
+
+        function drawPCA() {
+            pcaCtx.clearRect(0, 0, pcaCanvas.width, pcaCanvas.height);
+            
+            pcaPoints.forEach(point => {
+                pcaCtx.fillStyle = '#667eea';
+                pcaCtx.beginPath();
+                pcaCtx.arc(point.x, point.y, 5, 0, Math.PI * 2);
+                pcaCtx.fill();
+            });
+            
+            if (pcaPC1) {
+                const centerX = pcaCanvas.width / 2;
+                const centerY = pcaCanvas.height / 2;
+                
+                pcaCtx.strokeStyle = '#FF6B6B';
+                pcaCtx.lineWidth = 3;
+                pcaCtx.beginPath();
+                pcaCtx.moveTo(centerX - pcaPC1.x * 200, centerY - pcaPC1.y * 200);
+                pcaCtx.lineTo(centerX + pcaPC1.x * 200, centerY + pcaPC1.y * 200);
+                pcaCtx.stroke();
+                
+                drawArrow(pcaCtx, centerX, centerY, 
+                         centerX + pcaPC1.x * 200, centerY + pcaPC1.y * 200, '#FF6B6B');
+                
+                if (pcaPC2) {
+                    pcaCtx.strokeStyle = '#4ECDC4';
+                    pcaCtx.lineWidth = 3;
+                    pcaCtx.beginPath();
+                    pcaCtx.moveTo(centerX - pcaPC2.x * 150, centerY - pcaPC2.y * 150);
+                    pcaCtx.lineTo(centerX + pcaPC2.x * 150, centerY + pcaPC2.y * 150);
+                    pcaCtx.stroke();
+                    
+                    drawArrow(pcaCtx, centerX, centerY,
+                             centerX + pcaPC2.x * 150, centerY + pcaPC2.y * 150, '#4ECDC4');
+                }
+                
+                pcaCtx.fillStyle = '#FF6B6B';
+                pcaCtx.font = 'bold 16px sans-serif';
+                pcaCtx.fillText('PC1', centerX + pcaPC1.x * 210, centerY + pcaPC1.y * 210);
+                
+                if (pcaPC2) {
+                    pcaCtx.fillStyle = '#4ECDC4';
+                    pcaCtx.fillText('PC2', centerX + pcaPC2.x * 160, centerY + pcaPC2.y * 160);
+                }
+            }
+        }
+
+        function drawArrow(ctx, fromX, fromY, toX, toY, color) {
+            const headlen = 15;
+            const angle = Math.atan2(toY - fromY, toX - fromX);
+            
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = 2;
+            
+            ctx.beginPath();
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6),
+                      toY - headlen * Math.sin(angle - Math.PI / 6));
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6),
+                      toY - headlen * Math.sin(angle + Math.PI / 6));
+            ctx.stroke();
+        }
+
+        function runPCA() {
+            if (pcaPoints.length < 3) {
+                alert('Please add at least 3 points (click on canvas or generate data)!');
+                return;
+            }
+            
+            const meanX = pcaPoints.reduce((sum, p) => sum + p.x, 0) / pcaPoints.length;
+            const meanY = pcaPoints.reduce((sum, p) => sum + p.y, 0) / pcaPoints.length;
+            
+            const centered = pcaPoints.map(p => ({
+                x: p.x - meanX,
+                y: p.y - meanY
+            }));
+            
+            let cxx = 0, cxy = 0, cyy = 0;
+            centered.forEach(p => {
+                cxx += p.x * p.x;
+                cxy += p.x * p.y;
+                cyy += p.y * p.y;
+            });
+            cxx /= pcaPoints.length;
+            cxy /= pcaPoints.length;
+            cyy /= pcaPoints.length;
+            
+            const trace = cxx + cyy;
+            const det = cxx * cyy - cxy * cxy;
+            const lambda1 = trace / 2 + Math.sqrt(trace * trace / 4 - det);
+            const lambda2 = trace / 2 - Math.sqrt(trace * trace / 4 - det);
+            
+            if (Math.abs(cxy) > 0.0001) {
+                const v1x = lambda1 - cyy;
+                const v1y = cxy;
+                const norm1 = Math.sqrt(v1x * v1x + v1y * v1y);
+                pcaPC1 = {x: v1x / norm1, y: v1y / norm1};
+                
+                const v2x = lambda2 - cyy;
+                const v2y = cxy;
+                const norm2 = Math.sqrt(v2x * v2x + v2y * v2y);
+                pcaPC2 = {x: v2x / norm2, y: v2y / norm2};
+            } else {
+                pcaPC1 = {x: 1, y: 0};
+                pcaPC2 = {x: 0, y: 1};
+            }
+            
+            drawPCA();
+            
+            const var1 = (lambda1 / (lambda1 + lambda2) * 100).toFixed(1);
+            const var2 = (lambda2 / (lambda1 + lambda2) * 100).toFixed(1);
+            
+            document.getElementById('pcaStats').innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">PC1 Variance</div>
+                    <div class="stat-value">${var1}%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">PC2 Variance</div>
+                    <div class="stat-value">${var2}%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Points</div>
+                    <div class="stat-value">${pcaPoints.length}</div>
+                </div>
+            `;
+            
+            drawPCAScreePlot(lambda1, lambda2);
+        }
+
+        function drawPCAScreePlot(lambda1, lambda2) {
+            const screeCanvas = document.getElementById('pcaScree');
+            const screeCtx = screeCanvas.getContext('2d');
+            
+            const variances = [lambda1, lambda2];
+            const totalVar = lambda1 + lambda2;
+            const percentVars = variances.map(v => (v / totalVar) * 100);
+            
+            screeCtx.clearRect(0, 0, screeCanvas.width, screeCanvas.height);
+            
+            const padding = 60;
+            const plotWidth = screeCanvas.width - 2 * padding;
+            const plotHeight = screeCanvas.height - 2 * padding;
+            const barWidth = 100;
+            const spacing = 150;
+            
+            screeCtx.strokeStyle = '#333';
+            screeCtx.lineWidth = 2;
+            screeCtx.beginPath();
+            screeCtx.moveTo(padding, padding);
+            screeCtx.lineTo(padding, screeCanvas.height - padding);
+            screeCtx.lineTo(screeCanvas.width - padding, screeCanvas.height - padding);
+            screeCtx.stroke();
+            
+            screeCtx.strokeStyle = '#e0e0e0';
+            screeCtx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (plotHeight / 5) * i;
+                screeCtx.beginPath();
+                screeCtx.moveTo(padding, y);
+                screeCtx.lineTo(screeCanvas.width - padding, y);
+                screeCtx.stroke();
+            }
+            
+            percentVars.forEach((pct, i) => {
+                const x = screeCanvas.width / 2 - spacing + i * (barWidth + spacing);
+                const barHeight = (pct / 100) * plotHeight;
+                const y = screeCanvas.height - padding - barHeight;
+                
+                const gradient = screeCtx.createLinearGradient(0, y, 0, screeCanvas.height - padding);
+                gradient.addColorStop(0, i === 0 ? '#667eea' : '#4ECDC4');
+                gradient.addColorStop(1, i === 0 ? '#764ba2' : '#45B7D1');
+                
+                screeCtx.fillStyle = gradient;
+                screeCtx.fillRect(x, y, barWidth, barHeight);
+                
+                screeCtx.strokeStyle = '#333';
+                screeCtx.lineWidth = 2;
+                screeCtx.strokeRect(x, y, barWidth, barHeight);
+                
+                screeCtx.fillStyle = '#fff';
+                screeCtx.font = 'bold 18px sans-serif';
+                screeCtx.textAlign = 'center';
+                screeCtx.fillText(`${pct.toFixed(1)}%`, x + barWidth / 2, y + 30);
+                
+                screeCtx.fillStyle = '#333';
+                screeCtx.font = 'bold 16px sans-serif';
+                screeCtx.fillText(`PC${i + 1}`, x + barWidth / 2, screeCanvas.height - padding + 25);
+            });
+            
+            screeCtx.fillStyle = '#333';
+            screeCtx.font = 'bold 16px sans-serif';
+            screeCtx.textAlign = 'center';
+            screeCtx.fillText('Principal Component', screeCanvas.width / 2, screeCanvas.height - 10);
+            
+            screeCtx.save();
+            screeCtx.translate(20, screeCanvas.height / 2);
+            screeCtx.rotate(-Math.PI / 2);
+            screeCtx.fillText('Percent Variation', 0, 0);
+            screeCtx.restore();
+            
+            screeCtx.textAlign = 'right';
+            screeCtx.font = '12px sans-serif';
+            for (let i = 0; i <= 5; i++) {
+                const y = padding + (plotHeight / 5) * (5 - i);
+                const value = (20 * i).toFixed(0);
+                screeCtx.fillText(value + '%', padding - 10, y + 4);
+            }
+        }
+
+        function clearPCA() {
+            pcaPoints = [];
+            pcaPC1 = null;
+            pcaPC2 = null;
+            drawPCA();
+            document.getElementById('pcaStats').innerHTML = '';
+            
+            const screeCanvas = document.getElementById('pcaScree');
+            const screeCtx = screeCanvas.getContext('2d');
+            screeCtx.clearRect(0, 0, screeCanvas.width, screeCanvas.height);
+        }
+
+        // Initialize with some data
+        generateRandomData();
+    </script>
+</body>
+</html>
