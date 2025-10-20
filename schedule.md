@@ -194,7 +194,8 @@ Detecting remote sequence similarity, Substitution matrices, Database searching 
 
 **Material**:   
  
- - Lecture Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture03-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture03-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},    
+ - Presented Slides: [Large PDF]({{ site.baseurl }}/class-material/slides_class3-bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Background Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture03-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture03-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},    
 - Lab: [Hands-on section worksheet]({{ site.baseurl }}/class-material/lab03.pdf){:.no-push-state}{:target="_blank"},  
 - Bonus: [Alignment App](https://bioboot.github.io/bimm143_W20/class-material/nw/){:.no-push-state}{:target="_blank"},  
 - Feedback: [Muddy Point Assessment](https://forms.gle/TxSZcAG29qv84DEc6){:.no-push-state}{:target="_blank"}.   
@@ -230,7 +231,8 @@ Why do we use R for bioinformatics? R language basics and the RStudio IDE, Major
 - 4.3 [Working with DataCamp](https://youtu.be/oO2RFvpHjDg){:.no-push-state}{:target="_blank"}  **N.B.** Use your UCSD email invite to sign up and visit our class group/organization.    
 
 **Supporting Material:**
-- Presented Slides [Large PDF]({{ site.baseurl }}/class-material/slides_class4_bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Presented Slides: [Large PDF]({{ site.baseurl }}/class-material/slides_class4-bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Background Slides [Large PDF]({{ site.baseurl }}/class-material/slides_class4_bimm143.pdf){:.no-push-state}{:target="_blank"},  
 - Background Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture04-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
 - Cheat Sheet: [Base R overview](https://bioboot.github.io/bimm143_W25/class-material/base-r.pdf){:target="_blank"}{:.no-push-state},
 - Lab: [Hands-on section]({{ site.baseurl }}/class-material/r_intro/r_intro.html){:.no-push-state}{:target="_blank"},  
@@ -274,7 +276,8 @@ The exploratory data analysis mindset, Data visualization best practices, Simple
 
 
 **Supporting Material:**
-- Lecture Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture05-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture05-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
+- Presented Slides: [Large PDF]({{ site.baseurl }}/class-material/slides_class5-bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Background Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture05-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture05-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
 - Lab: [Hands-on worksheet]({{ site.baseurl }}/class-material/lab05.html){:.no-push-state}{:target="_blank"},
 - Lab: Live screencast [video walk-through](https://youtu.be/p9ap6X1V3mo){:target="_blank"}{:.no-push-state}.
 - Student Hours: [{{ site.data.authors.corelinks.officetime }}]({{ site.data.authors.corelinks.officehours }}){:.no-push-state}{:target="_blank"},   
@@ -311,7 +314,8 @@ The why, when and how of writing your own R functions with worked examples. Furt
 
 
 **Supporting material:**  
-- Lecture Slides: [Pt1. Large PDF]({{ site.baseurl }}/class-material/lecture06-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Pt2. Large PDF]({{ site.baseurl }}/class-material/lecture07-BIMM143-large.pdf){:.no-push-state}{:target="_blank"},  
+- Presented Slides: [Large PDF]({{ site.baseurl }}/class-material/slides_class6-bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Background Slides: [Pt1. Large PDF]({{ site.baseurl }}/class-material/lecture06-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Pt2. Large PDF]({{ site.baseurl }}/class-material/lecture07-BIMM143-large.pdf){:.no-push-state}{:target="_blank"},  
 - Lab: [Hands-on section worksheet]({{ site.baseurl }}/class-material/lab06.pdf){:.no-push-state}{:target="_blank"},  
 - Lab supplement: [Hands-on section supplemental information]({{ site.baseurl }}/class-material/lecture06-BIMM143_W19.pdf){:.no-push-state}{:target="_blank"},   
 - Lab: Live screencast [video walk-through](https://youtu.be/Zr9BVGGhaNc){:target="_blank"}{:.no-push-state}.   
@@ -358,7 +362,8 @@ Unsupervised learning, supervised learning and reinforcement learning; Focus on 
   
 
 **Supporting material:**  
-- Lecture Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture08-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture08-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
+- Presented Slides: [Large PDF]({{ site.baseurl }}/class-material/slides_class7-bimm143.pdf){:.no-push-state}{:target="_blank"},  
+- Background Slides: [Large PDF]({{ site.baseurl }}/class-material/lecture08-BIMM143-large.pdf){:.no-push-state}{:target="_blank"}, [Small PDF]({{ site.baseurl }}/class-material/lecture08-BIMM143-small.pdf){:.no-push-state}{:target="_blank"},  
 - WebApp: [Introduction to PCA]({{ site.baseurl }}/class-material/pca/){:.no-push-state}{:target="_blank"},  
 - Lab: [Hands-on section worksheet for PCA]({{ site.baseurl }}/class-material/lab07.html){:.no-push-state}{:target="_blank"},  
 - Data files: [UK_foods.csv]({{ site.baseurl }}/class-material/UK_foods.csv){:.no-push-state}, [WisconsinCancer.csv]({{ site.baseurl }}/class-material/WisconsinCancer.csv){:.no-push-state}, [new_samples.csv]({{ site.baseurl }}/class-material/new_samples.csv){:.no-push-state}.  
