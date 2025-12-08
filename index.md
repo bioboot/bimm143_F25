@@ -46,7 +46,7 @@ There is no textbook for the course. Lecture notes, homework assignments, gradin
 A detailed [syllabus]({{ site.baseurl}}{{site.data.authors.corelinks.syllabus}}){:.no-push-state} with topic outlines and learning goals is available for download.
 
 ## Surveys:
-Please help us improve this course by completing by completing these surveys before and after the course. Thank you!
+Please help us improve this course by completing these surveys before and after the course. Thank you!
 * [Pre-course questionnaire]({{ site.data.authors.corelinks.questionnaire }}){:target="_blank"}  
 * [Post-course questionnaire]({{ site.baseurl }}/404/)  
 
